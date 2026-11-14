@@ -10,8 +10,8 @@ from src.library_fine import calculate_fine
         (1, 50),
         (9, 450),
         (10, 500),
-        (11, 550),
-        (1000, 50000),
+        (11, 550),  # Supplied code returns 500: min(days_overdue, 10) adds a cap.
+        (1000, 50000),  # The specification says there is no maximum fine.
     ],
 )
 def test_nonnegative_overdue_days_returns_fine_in_cents(days_overdue, expected_fine):

@@ -9,7 +9,7 @@ from src.library_eligibility import can_borrow
         (0, 0, True),
         (1, 0, True),
         (4, 0, True),
-        (5, 0, False),
+        (5, 0, False),  # Supplied code uses <= 5; the requirement is less than 5.
         (6, 0, False),
         (0, 1, False),
         (4, 1, False),
