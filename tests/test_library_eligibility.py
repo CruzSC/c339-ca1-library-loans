@@ -20,11 +20,11 @@ from src.library_eligibility import can_borrow
     ],
 )
 def test_valid_loan_counts_returns_expected_eligibility(active_loans, overdue_books, expected):
-    # Arrange: each row gives the loan counts and expected borrowing decision.
+    # Arrange: test data is supplied above.
     # Act
     result = can_borrow(active_loans, overdue_books)
 
-    # Assert: identity checks the exact Boolean as well as its value.
+    # Assert: check that the result is exactly True or False.
     assert result is expected
 
 
@@ -34,13 +34,13 @@ def test_negative_loan_counts_raises_value_error(active_loans, overdue_books):
         can_borrow(active_loans, overdue_books)
 
 
-@pytest.mark.parametrize("active_loans", [1.5, "1", None, [], {}, True, False])
+@pytest.mark.parametrize("active_loans", [1.0, 1.5, "1", None, [], {}, True, False])
 def test_invalid_active_loans_type_raises_type_error(active_loans):
     with pytest.raises(TypeError):
         can_borrow(active_loans, 0)
 
 
-@pytest.mark.parametrize("overdue_books", [1.5, "1", None, [], {}, True, False])
+@pytest.mark.parametrize("overdue_books", [1.0, 1.5, "1", None, [], {}, True, False])
 def test_invalid_overdue_books_type_raises_type_error(overdue_books):
     with pytest.raises(TypeError):
         can_borrow(0, overdue_books)
